@@ -51,6 +51,16 @@ IDEA_RETRY_LIMIT = int(os.getenv("IDEA_RETRY_LIMIT", "5"))
 RECENT_DUPLICATE_WINDOW = int(os.getenv("RECENT_DUPLICATE_WINDOW", "30"))
 MAX_HISTORY_ITEMS = int(os.getenv("MAX_HISTORY_ITEMS", "500"))
 
+# Quality-first generation settings
+QUALITY_MODE = os.getenv("QUALITY_MODE", "strict").lower()
+MIN_SECTION_COUNT = int(os.getenv("MIN_SECTION_COUNT", "10"))
+MIN_GUIDE_CHAPTERS = int(os.getenv("MIN_GUIDE_CHAPTERS", "4"))
+MIN_CHAPTER_WORDS = int(os.getenv("MIN_CHAPTER_WORDS", "160"))
+
+# Launch pricing strategy: conversion-first
+LAUNCH_PRICE_MIN = float(os.getenv("LAUNCH_PRICE_MIN", "4.99"))
+LAUNCH_PRICE_MAX = float(os.getenv("LAUNCH_PRICE_MAX", "8.99"))
+
 # Paths
 ROOT_DIR = Path(__file__).parent.parent
 OUTPUT_DIR = ROOT_DIR / "output"

@@ -100,6 +100,8 @@ def run(dry_run: bool = False, niche: str | None = None):
             "niche": product.get("niche", ""),
             "fingerprint": product.get("fingerprint", ""),
             "novelty_score": product.get("novelty_score", 0),
+            "quality_score": product.get("quality_score", 0),
+            "quality_notes": product.get("quality_notes", []),
             "dedupe_retry_count": product.get("dedupe_retry_count", 0),
             "pdf": str(pdf_path),
             "listing": str(listing_path),
@@ -159,7 +161,10 @@ def _history_entry(product: dict) -> dict:
         "product_type": product.get("product_type", ""),
         "fingerprint": product.get("fingerprint", ""),
         "novelty_score": product.get("novelty_score", 0),
+        "quality_score": product.get("quality_score", 0),
+        "quality_notes": product.get("quality_notes", []),
         "section_headings": [s.get("heading", "") for s in product.get("sections", [])],
+        "chapter_headings": [c.get("heading", "") for c in product.get("chapters", [])],
         "target_audience": product.get("target_audience", ""),
         "use_case": product.get("use_case", ""),
     }
@@ -203,8 +208,8 @@ def _generate_combined_csv(listing_files: list[Path], output_path: Path):
 def _dummy_product(index: int = 0) -> dict:
     """Generate a dummy product for dry-run testing."""
     variants = [
-        ("Printable System", "weekly planner system", "productivity"),
         ("Guide Workbook", "step-by-step action guide", "small-business"),
+        ("Printable System", "weekly planner system", "productivity"),
         ("Starter Kit", "job search starter kit", "career"),
         ("Business System", "content planning system", "small-business"),
     ]
@@ -215,6 +220,75 @@ def _dummy_product(index: int = 0) -> dict:
         "title": f"{label} Pack {suffix}",
         "subtitle": "Premium toolkit for fast implementation",
         "description": "A practical bundle with guided pages, trackers, and actionable worksheets.",
+        "buyer_outcome": "Move from scattered execution to a clear and repeatable operating rhythm.",
+        "guide_intro": (
+            "This workbook gives you a practical implementation framework you can apply immediately. "
+            "Each chapter turns strategy into clear actions so you can produce measurable progress week by week.\n\n"
+            "Use the worksheets after each chapter to build your custom plan. By the end, you will have a complete "
+            "execution system tailored to your own priorities."
+        ),
+        "chapters": [
+            {
+                "heading": "Set a Clear Strategic Focus",
+                "objective": "Define a measurable focus so daily actions align with your highest-value outcomes.",
+                "body_paragraphs": [
+                    "Most execution problems come from a weak definition of success. Instead of carrying a broad list of tasks, establish one dominant objective and a small number of supporting outcomes. This forces prioritization and reduces decision fatigue.",
+                    "Once your objective is clear, convert it into operating metrics. Metrics should be simple enough to review weekly and specific enough to trigger action when performance drifts. This transforms planning into a practical management process.",
+                    "Document constraints early. Time, resources, and current obligations shape what is feasible in the next month. A good plan respects constraints while still creating momentum through focused execution.",
+                ],
+                "example": "A freelancer can define one 30-day objective: increase qualified leads by 25%, measured by weekly outreach conversations and proposal requests.",
+                "key_takeaways": [
+                    "One clear objective beats multiple competing priorities.",
+                    "Track metrics that force action, not vanity indicators.",
+                    "Plans become realistic when constraints are explicit.",
+                ],
+            },
+            {
+                "heading": "Design a Weekly Execution System",
+                "objective": "Create a repeatable weekly rhythm that turns goals into completed outputs.",
+                "body_paragraphs": [
+                    "Execution quality improves when your week has a predictable structure. Assign specific days for planning, production, review, and optimization. This rhythm prevents context switching and helps maintain consistent output.",
+                    "Batch similar work together to protect focus. For example, keep strategic planning in one dedicated block and operational tasks in another. Batching reduces mental overhead and increases throughput without extending work hours.",
+                    "Build a short end-of-week review. Review what was completed, what slipped, and why. Then adjust next week before momentum is lost. This review loop is what makes the system adaptive and resilient.",
+                ],
+                "example": "A small business owner can use Monday for planning, Tuesday-Thursday for delivery, Friday for review and next-week setup.",
+                "key_takeaways": [
+                    "Consistent weekly cadence compounds results.",
+                    "Batching increases output quality and speed.",
+                    "Review loops prevent repeated mistakes.",
+                ],
+            },
+            {
+                "heading": "Prioritize High-Impact Actions",
+                "objective": "Separate high-impact activities from low-value busyness.",
+                "body_paragraphs": [
+                    "A high-quality plan ranks actions by impact and effort. Prioritize tasks that produce measurable progress with manageable effort, then schedule them at your highest-energy hours. This creates visible wins early in the cycle.",
+                    "Use a clear definition of done for every major task. Ambiguous tasks expand and consume time. Defined completion criteria keep execution objective and make delegation easier.",
+                    "Eliminate or automate low-value recurring tasks where possible. Every removed task expands your capacity for strategic work and improves the odds of completing high-priority initiatives.",
+                ],
+                "example": "Instead of generic marketing tasks, focus on one high-impact action: publish one conversion-focused offer page and drive targeted traffic to it.",
+                "key_takeaways": [
+                    "Impact-first prioritization drives better outcomes.",
+                    "A clear definition of done accelerates completion.",
+                    "Automation protects time for strategic work.",
+                ],
+            },
+            {
+                "heading": "Scale Through Iteration",
+                "objective": "Use short feedback cycles to improve performance every week.",
+                "body_paragraphs": [
+                    "Scaling is rarely a single breakthrough. It comes from iterative refinement of offers, workflows, and messaging. Capture key lessons weekly and feed them directly into your next execution plan.",
+                    "Create a simple experiment log. Track assumptions, changes made, and observed results. Over time this gives you a reliable decision system and reduces guesswork.",
+                    "As performance improves, document standard operating procedures for recurring tasks. SOPs make your process repeatable and easier to delegate, which is essential for growth without burnout.",
+                ],
+                "example": "After each weekly cycle, a creator logs which content format generated the most qualified leads and doubles down in the next sprint.",
+                "key_takeaways": [
+                    "Iteration beats perfection for long-term growth.",
+                    "Experiment logs improve decision quality.",
+                    "SOPs enable scaling without chaos.",
+                ],
+            },
+        ],
         "sections": [
             {"heading": "Weekly Goals", "type": "checklist", "rows": 5},
             {"heading": "Daily Schedule", "type": "table", "rows": 7,
@@ -235,6 +309,8 @@ def _dummy_product(index: int = 0) -> dict:
         "product_type": subtype,
         "fingerprint": f"dryrun-{suffix}",
         "novelty_score": 100,
+        "quality_score": 92,
+        "quality_notes": ["dry-run premium fallback"],
         "dedupe_retry_count": 0,
         "palette": {
             "name": "Minimal",
@@ -242,6 +318,14 @@ def _dummy_product(index: int = 0) -> dict:
             "secondary": "#ECF0F1",
             "accent": "#3498DB",
         },
+        "deliverables": [
+            "Premium cover page",
+            "Quick start implementation guide",
+            "4 strategy chapters with practical examples",
+            "Guided worksheets and trackers",
+            "30-day action plan page",
+            "A4 + Letter printable files",
+        ],
     }
 
 
