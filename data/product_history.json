@@ -318,5 +318,36 @@
     ],
     "target_audience": "Busy professionals and creators",
     "use_case": "Planning, execution, and weekly review"
+  },
+  {
+    "created_at": "2026-04-30T19:15:14.885673",
+    "title": "Essential Wedding Binder for Teachers",
+    "niche": "teacher",
+    "product_family": "printable_bundle",
+    "product_subtype": "wedding binder pack",
+    "product_type": "wedding binder pack",
+    "fingerprint": "2b7058f5b464f8f0",
+    "novelty_score": 100,
+    "quality_score": 100,
+    "quality_notes": [],
+    "section_headings": [
+      "Wedding Budget Overview",
+      "Vendor Contact List",
+      "Guest List Tracker",
+      "Wedding Timeline",
+      "Ceremony Details",
+      "Reception Layout",
+      "Personal Vow Ideas",
+      "Music Playlist",
+      "Photography Shot List",
+      "Important Dates & Deadlines",
+      "Bridal Party Contact Information",
+      "Timeline for Rehearsal Dinner",
+      "Final Checklist",
+      "Notes"
+    ],
+    "chapter_headings": [],
+    "target_audience": "Teachers planning their weddings who need organization tools",
+    "use_case": "Utilized during wedding planning year-round for schedules, budgets, and vendor management"
   }
 ]
