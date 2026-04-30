@@ -20,5 +20,27 @@
     ],
     "target_audience": "Busy professionals and creators",
     "use_case": "Planning, execution, and weekly review"
+  },
+  {
+    "created_at": "2026-04-30T20:07:13.119514",
+    "title": "Printable System Pack 370",
+    "niche": "productivity",
+    "product_family": "printable_system",
+    "product_subtype": "weekly planner system",
+    "product_type": "weekly planner system",
+    "fingerprint": "dryrun-370",
+    "novelty_score": 100,
+    "section_headings": [
+      "Weekly Goals",
+      "Daily Schedule",
+      "Notes",
+      "Habit Tracker",
+      "Reflection",
+      "Action Plan",
+      "Weekly Review",
+      "Priority Backlog"
+    ],
+    "target_audience": "Busy professionals and creators",
+    "use_case": "Planning, execution, and weekly review"
   }
 ]

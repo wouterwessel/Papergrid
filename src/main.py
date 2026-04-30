@@ -43,7 +43,11 @@ def run(dry_run: bool = False, niche: str | None = None):
         if dry_run:
             product = _dummy_product(i)
         else:
-            product = generate_product_idea(niche=niche, recent_history=history)
+            try:
+                product = generate_product_idea(niche=niche, recent_history=history)
+            except Exception as exc:  # noqa: BLE001
+                print(f"  -> Product generation failed, using fallback template: {exc}")
+                product = _dummy_product(i)
         print(f"  -> {product['title']}")
 
         # Step 2: Create PDF
@@ -58,7 +62,11 @@ def run(dry_run: bool = False, niche: str | None = None):
         if dry_run:
             listing = _dummy_listing(product)
         else:
-            listing = generate_etsy_listing(product)
+            try:
+                listing = generate_etsy_listing(product)
+            except Exception as exc:  # noqa: BLE001
+                print(f"  -> Etsy listing generation failed, using fallback listing: {exc}")
+                listing = _dummy_listing(product)
         listing_path = save_listing(product, listing, day_dir)
         print(f"  -> {listing_path.name}")
 
@@ -73,13 +81,17 @@ def run(dry_run: bool = False, niche: str | None = None):
             print("  -> [DRY RUN] Skipping Pinterest post")
             pin_result = None
         else:
-            pinterest_copy = generate_pinterest_copy(product)
-            pin_result = post_pin(
-                image_path=pin_image_path,
-                title=pinterest_copy["pin_title"],
-                description=pinterest_copy["pin_description"],
-                board_name=pinterest_copy.get("board_name", "Digital Planners"),
-            )
+            try:
+                pinterest_copy = generate_pinterest_copy(product)
+                pin_result = post_pin(
+                    image_path=pin_image_path,
+                    title=pinterest_copy.get("pin_title", product["title"]),
+                    description=pinterest_copy.get("pin_description", product.get("description", "")),
+                    board_name=pinterest_copy.get("board_name", "Digital Planners"),
+                )
+            except Exception as exc:  # noqa: BLE001
+                print(f"  -> Pinterest post failed, continuing without posting: {exc}")
+                pin_result = None
 
         generated.append({
             "title": product["title"],

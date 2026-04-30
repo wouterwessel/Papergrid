@@ -32,7 +32,34 @@ def _extract_json(content: str) -> dict:
     if cleaned.startswith("```"):
         cleaned = cleaned.split("\n", 1)[1]
         cleaned = cleaned.rsplit("```", 1)[0]
-    return json.loads(cleaned)
+    try:
+        return json.loads(cleaned)
+    except json.JSONDecodeError:
+        # Fallback for model responses that wrap JSON with extra text.
+        start = cleaned.find("{")
+        end = cleaned.rfind("}")
+        if start != -1 and end != -1 and end > start:
+            return json.loads(cleaned[start:end + 1])
+        raise
+
+
+def _chat_json(prompt: str, *, temperature: float, max_tokens: int, retries: int = 3) -> dict:
+    last_error = None
+    for _ in range(retries):
+        try:
+            response = client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[{"role": "user", "content": prompt}],
+                temperature=temperature,
+                max_tokens=max_tokens,
+            )
+            content = response.choices[0].message.content or "{}"
+            return _extract_json(content)
+        except Exception as exc:  # noqa: BLE001
+            last_error = exc
+    if last_error:
+        raise last_error
+    raise RuntimeError("AI call failed without a specific error")
 
 
 def _weighted_pick(options: list[str], counts: dict[str, int]) -> str:
@@ -171,14 +198,7 @@ Return a JSON object with:
 
 Return ONLY valid JSON, no markdown."""
 
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[{"role": "user", "content": prompt}],
-        temperature=1.0,
-        max_tokens=1400,
-    )
-
-    product = _extract_json(response.choices[0].message.content)
+    product = _chat_json(prompt, temperature=1.0, max_tokens=1400)
     product["niche"] = plan["niche"]
     product["product_family"] = plan["product_family"]
     product["product_subtype"] = plan["product_subtype"]
@@ -250,19 +270,7 @@ Return a JSON object with:
 
 Return ONLY valid JSON, no markdown."""
 
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0.7,
-        max_tokens=1500,
-    )
-
-    content = response.choices[0].message.content.strip()
-    if content.startswith("```"):
-        content = content.split("\n", 1)[1]
-        content = content.rsplit("```", 1)[0]
-
-    listing = _extract_json(content)
+    listing = _chat_json(prompt, temperature=0.7, max_tokens=1500)
     listing["description"] = _ensure_ai_disclosure(listing.get("description", ""))
     return listing
 
@@ -282,16 +290,4 @@ Return a JSON object with:
 
 Return ONLY valid JSON, no markdown."""
 
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0.7,
-        max_tokens=500,
-    )
-
-    content = response.choices[0].message.content.strip()
-    if content.startswith("```"):
-        content = content.split("\n", 1)[1]
-        content = content.rsplit("```", 1)[0]
-
-    return json.loads(content)
+    return _chat_json(prompt, temperature=0.7, max_tokens=500)
