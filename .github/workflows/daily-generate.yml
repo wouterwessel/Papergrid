@@ -1,7 +1,7 @@
 name: Daily Product Generation
 
 permissions:
-  contents: read
+  contents: write
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -81,3 +81,13 @@ jobs:
           name: products-${{ github.run_number }}
           path: output/
           retention-days: 30
+
+      - name: Persist deduplication history
+        run: |
+          if [ -f "data/product_history.json" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add data/product_history.json
+            git diff --cached --quiet || git commit -m "chore: update product history"
+            git push || true
+          fi

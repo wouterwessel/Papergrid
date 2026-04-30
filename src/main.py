@@ -1,11 +1,12 @@
 """Main orchestrator - generates products, listings, and pins."""
 
 import json
+import random
 import sys
 from datetime import datetime
 from pathlib import Path
 
-from src.config import OUTPUT_DIR, PRODUCTS_PER_RUN, NICHES
+from src.config import OUTPUT_DIR, PRODUCTS_PER_RUN, HISTORY_FILE, MAX_HISTORY_ITEMS
 from src.generator.product_ideas import (
     generate_product_idea,
     generate_etsy_listing,
@@ -31,6 +32,7 @@ def run(dry_run: bool = False, niche: str | None = None):
     print(f"Dry run: {dry_run}")
     print()
 
+    history = _load_history()
     generated = []
 
     for i in range(PRODUCTS_PER_RUN):
@@ -39,9 +41,9 @@ def run(dry_run: bool = False, niche: str | None = None):
         # Step 1: Generate product idea
         print("[1/5] Generating product idea...")
         if dry_run:
-            product = _dummy_product()
+            product = _dummy_product(i)
         else:
-            product = generate_product_idea(niche=niche)
+            product = generate_product_idea(niche=niche, recent_history=history)
         print(f"  -> {product['title']}")
 
         # Step 2: Create PDF
@@ -81,11 +83,19 @@ def run(dry_run: bool = False, niche: str | None = None):
 
         generated.append({
             "title": product["title"],
+            "product_family": product.get("product_family", ""),
+            "product_subtype": product.get("product_subtype", ""),
+            "niche": product.get("niche", ""),
+            "fingerprint": product.get("fingerprint", ""),
+            "novelty_score": product.get("novelty_score", 0),
+            "dedupe_retry_count": product.get("dedupe_retry_count", 0),
             "pdf": str(pdf_path),
             "listing": str(listing_path),
             "pin_image": str(pin_image_path),
             "pinterest_posted": pin_result is not None,
         })
+
+        history.append(_history_entry(product))
 
         print()
 
@@ -103,8 +113,44 @@ def run(dry_run: bool = False, niche: str | None = None):
     # Save manifest
     manifest_path = day_dir / "manifest.json"
     manifest_path.write_text(json.dumps(generated, indent=2), encoding="utf-8")
+    _save_history(history)
 
     return generated
+
+
+def _load_history() -> list[dict]:
+    """Load persistent product history for deduplication."""
+    if not HISTORY_FILE.exists():
+        return []
+
+    try:
+        return json.loads(HISTORY_FILE.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return []
+
+
+def _save_history(history: list[dict]):
+    """Save bounded product history list."""
+    HISTORY_FILE.parent.mkdir(parents=True, exist_ok=True)
+    trimmed = history[-MAX_HISTORY_ITEMS:]
+    HISTORY_FILE.write_text(json.dumps(trimmed, indent=2), encoding="utf-8")
+
+
+def _history_entry(product: dict) -> dict:
+    """Extract deduplication metadata from generated product."""
+    return {
+        "created_at": datetime.now().isoformat(),
+        "title": product.get("title", ""),
+        "niche": product.get("niche", ""),
+        "product_family": product.get("product_family", ""),
+        "product_subtype": product.get("product_subtype", ""),
+        "product_type": product.get("product_type", ""),
+        "fingerprint": product.get("fingerprint", ""),
+        "novelty_score": product.get("novelty_score", 0),
+        "section_headings": [s.get("heading", "") for s in product.get("sections", [])],
+        "target_audience": product.get("target_audience", ""),
+        "use_case": product.get("use_case", ""),
+    }
 
 
 def _generate_combined_csv(listing_files: list[Path], output_path: Path):
@@ -142,12 +188,21 @@ def _generate_combined_csv(listing_files: list[Path], output_path: Path):
             ])
 
 
-def _dummy_product() -> dict:
+def _dummy_product(index: int = 0) -> dict:
     """Generate a dummy product for dry-run testing."""
+    variants = [
+        ("Printable System", "weekly planner system", "productivity"),
+        ("Guide Workbook", "step-by-step action guide", "small-business"),
+        ("Starter Kit", "job search starter kit", "career"),
+        ("Business System", "content planning system", "small-business"),
+    ]
+    label, subtype, niche = variants[index % len(variants)]
+    suffix = random.randint(100, 999)
+
     return {
-        "title": "Weekly Productivity Planner",
-        "subtitle": "Plan your week with intention",
-        "description": "A comprehensive weekly planner to boost productivity.",
+        "title": f"{label} Pack {suffix}",
+        "subtitle": "Premium toolkit for fast implementation",
+        "description": "A practical bundle with guided pages, trackers, and actionable worksheets.",
         "sections": [
             {"heading": "Weekly Goals", "type": "checklist", "rows": 5},
             {"heading": "Daily Schedule", "type": "table", "rows": 7,
@@ -155,11 +210,20 @@ def _dummy_product() -> dict:
             {"heading": "Notes", "type": "lined", "rows": 8},
             {"heading": "Habit Tracker", "type": "grid", "rows": 4, "columns": 7},
             {"heading": "Reflection", "type": "blank", "rows": 6},
+            {"heading": "Action Plan", "type": "table", "rows": 8,
+             "columns": 3, "column_headers": ["Step", "Owner", "Deadline"]},
+            {"heading": "Weekly Review", "type": "lined", "rows": 10},
+            {"heading": "Priority Backlog", "type": "checklist", "rows": 12},
         ],
-        "target_audience": "Busy professionals and students",
-        "use_case": "Weekly planning and goal setting",
-        "niche": "productivity",
-        "product_type": "weekly planner",
+        "target_audience": "Busy professionals and creators",
+        "use_case": "Planning, execution, and weekly review",
+        "niche": niche,
+        "product_family": label.lower().replace(" ", "_"),
+        "product_subtype": subtype,
+        "product_type": subtype,
+        "fingerprint": f"dryrun-{suffix}",
+        "novelty_score": 100,
+        "dedupe_retry_count": 0,
         "palette": {
             "name": "Minimal",
             "primary": "#2C3E50",
@@ -176,7 +240,9 @@ def _dummy_listing(product: dict) -> dict:
         "description": f"Stay organized with this beautiful {product['title'].lower()}.\n\n"
                        "WHAT'S INCLUDED:\n- 1 PDF file (A4 size)\n- 1 PDF file (Letter size)\n\n"
                        "HOW TO USE:\n1. Purchase and download\n2. Print at home or at a print shop\n3. Start planning!\n\n"
-                       "FEATURES:\n- Clean, minimal design\n- Printer-friendly\n- Instant download",
+                   "FEATURES:\n- Clean, minimal design\n- Printer-friendly\n- Instant download\n\n"
+                   "AI DISCLOSURE\n"
+                   "This digital product was created with AI assistance and then reviewed, curated, and formatted by the shop owner.",
         "tags": ["planner", "printable", "productivity", "weekly planner", "digital download",
                  "pdf planner", "minimalist", "organizer", "to do list", "goal planner",
                  "instant download", "A4 planner", "print at home"],

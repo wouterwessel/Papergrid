@@ -14,11 +14,49 @@ PRODUCTS_PER_RUN = int(os.getenv("PRODUCTS_PER_RUN", "1"))
 DEFAULT_PRICE = float(os.getenv("DEFAULT_PRICE", "4.99"))
 NICHES = os.getenv("NICHES", "productivity,budget,wedding,teacher,small-business").split(",")
 
+# Product families (presentation PDFs intentionally excluded)
+PRODUCT_FAMILIES = {
+    "printable_bundle": [
+        "weekly planner system",
+        "habit tracker bundle",
+        "budget tracker pack",
+        "wedding binder pack",
+        "study planner bundle",
+    ],
+    "guide_workbook": [
+        "beginner guide workbook",
+        "step-by-step action guide",
+        "30-day challenge workbook",
+        "self-assessment workbook",
+        "implementation workbook",
+    ],
+    "starter_kit": [
+        "small business starter kit",
+        "job search starter kit",
+        "freelancer admin starter kit",
+        "home management starter kit",
+        "finance reset starter kit",
+    ],
+    "business_system": [
+        "content planning system",
+        "client onboarding system",
+        "service delivery system",
+        "lead tracking system",
+        "operations checklist system",
+    ],
+}
+
+# Diversity and deduplication settings
+IDEA_RETRY_LIMIT = int(os.getenv("IDEA_RETRY_LIMIT", "5"))
+RECENT_DUPLICATE_WINDOW = int(os.getenv("RECENT_DUPLICATE_WINDOW", "30"))
+MAX_HISTORY_ITEMS = int(os.getenv("MAX_HISTORY_ITEMS", "500"))
+
 # Paths
 ROOT_DIR = Path(__file__).parent.parent
 OUTPUT_DIR = ROOT_DIR / "output"
 TEMPLATES_DIR = ROOT_DIR / "templates"
 FONTS_DIR = TEMPLATES_DIR / "fonts"
+HISTORY_FILE = ROOT_DIR / "data" / "product_history.json"
 
 # PDF settings
 PDF_FORMATS = {
