@@ -1,5 +1,11 @@
 name: Daily Product Generation
 
+permissions:
+  contents: read
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 on:
   schedule:
     # Runs every day at 7:00 AM UTC
@@ -22,10 +28,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.12'
           cache: 'pip'
@@ -45,30 +51,33 @@ jobs:
           ETSY_SHOP_NAME: ${{ secrets.ETSY_SHOP_NAME }}
         run: |
           ARGS=""
-          if [ "${{ inputs.dry_run }}" = "true" ]; then
+
+          # workflow_dispatch input is empty on scheduled runs; default to false
+          DRY_RUN_INPUT="${{ github.event.inputs.dry_run || 'false' }}"
+          NICHE_INPUT="${{ github.event.inputs.niche || '' }}"
+
+          if [ "$DRY_RUN_INPUT" = "true" ]; then
             ARGS="$ARGS --dry-run"
           fi
-          if [ -n "${{ inputs.niche }}" ]; then
-            ARGS="$ARGS --niche=${{ inputs.niche }}"
+
+          # Avoid hard failures when OpenAI key is not configured yet
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo "OPENAI_API_KEY is missing, switching to --dry-run"
+            case " $ARGS " in
+              *" --dry-run "*) ;;
+              *) ARGS="$ARGS --dry-run" ;;
+            esac
           fi
+
+          if [ -n "$NICHE_INPUT" ]; then
+            ARGS="$ARGS --niche=$NICHE_INPUT"
+          fi
+
           python -m src.main $ARGS
 
       - name: Upload generated products
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: products-${{ github.run_number }}
           path: output/
           retention-days: 30
-
-      - name: Commit bulk CSV to repo
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          # Only commit the CSV and manifest files, not the full output
-          WEEK_DIR=$(find output -maxdepth 1 -type d -name "week-*" | sort | tail -1)
-          if [ -n "$WEEK_DIR" ] && [ -f "$WEEK_DIR/etsy_bulk_upload.csv" ]; then
-            git add "$WEEK_DIR/etsy_bulk_upload.csv"
-            git add "$WEEK_DIR/*/manifest.json" 2>/dev/null || true
-            git commit -m "🛍️ New products generated $(date +%Y-%m-%d)" || echo "No changes to commit"
-            git push
-          fi
