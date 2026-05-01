@@ -349,5 +349,37 @@
     "chapter_headings": [],
     "target_audience": "Teachers planning their weddings who need organization tools",
     "use_case": "Utilized during wedding planning year-round for schedules, budgets, and vendor management"
+  },
+  {
+    "created_at": "2026-05-01T10:59:43.962436",
+    "title": "Guide Workbook Pack 328",
+    "niche": "small-business",
+    "product_family": "guide_workbook",
+    "product_subtype": "step-by-step action guide",
+    "product_type": "step-by-step action guide",
+    "fingerprint": "dryrun-328",
+    "novelty_score": 100,
+    "quality_score": 92,
+    "quality_notes": [
+      "dry-run premium fallback"
+    ],
+    "section_headings": [
+      "Weekly Goals",
+      "Daily Schedule",
+      "Notes",
+      "Habit Tracker",
+      "Reflection",
+      "Action Plan",
+      "Weekly Review",
+      "Priority Backlog"
+    ],
+    "chapter_headings": [
+      "Set a Clear Strategic Focus",
+      "Design a Weekly Execution System",
+      "Prioritize High-Impact Actions",
+      "Scale Through Iteration"
+    ],
+    "target_audience": "Busy professionals and creators",
+    "use_case": "Planning, execution, and weekly review"
   }
 ]
