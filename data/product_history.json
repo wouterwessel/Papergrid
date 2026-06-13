@@ -1683,5 +1683,32 @@
     ],
     "target_audience": "Busy professionals and creators",
     "use_case": "Planning, execution, and weekly review"
+  },
+  {
+    "created_at": "2026-06-13T09:56:26.802752",
+    "title": "Empowered Educators Weekly Planner Bundle",
+    "niche": "teacher",
+    "product_family": "printable_bundle",
+    "product_subtype": "weekly planner system",
+    "product_type": "weekly planner system",
+    "fingerprint": "3e0409163f5add9b",
+    "novelty_score": 93,
+    "quality_score": 100,
+    "quality_notes": [],
+    "section_headings": [
+      "Weekly Overview",
+      "Lesson Plan Outline",
+      "Student Attention Tracker",
+      "Goal Setting for Students",
+      "Classroom Materials Checklist",
+      "Professional Development Goals",
+      "Feedback & Notes",
+      "Parent Communication Log",
+      "Weekly Reflection",
+      "Event Planning"
+    ],
+    "chapter_headings": [],
+    "target_audience": "Teachers looking for an effective way to organize their weekly plans and enhance student engagement.",
+    "use_case": "Used weekly to structure lesson plans, track assignments, and maintain focus on educational objectives."
   }
 ]
