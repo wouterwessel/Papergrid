@@ -1806,5 +1806,32 @@
     ],
     "target_audience": "Busy professionals and creators",
     "use_case": "Planning, execution, and weekly review"
+  },
+  {
+    "created_at": "2026-06-17T11:47:56.776530",
+    "title": "Budget-Friendly Wedding Binder Pack for Dream Weddings",
+    "niche": "budget",
+    "product_family": "printable_bundle",
+    "product_subtype": "wedding binder pack",
+    "product_type": "wedding binder pack",
+    "fingerprint": "5ae8b6fe96b264e4",
+    "novelty_score": 92,
+    "quality_score": 100,
+    "quality_notes": [],
+    "section_headings": [
+      "Budget Overview",
+      "Guest List Tracker",
+      "Venue Comparison Chart",
+      "Vendor Contact List",
+      "Timeline Planner",
+      "Seating Arrangement Layout",
+      "Wedding Day Schedule",
+      "Attire Budget Planner",
+      "Gift Registry Tracker",
+      "DIY Projects List"
+    ],
+    "chapter_headings": [],
+    "target_audience": "Brides and grooms-to-be looking for budget-conscious wedding solutions.",
+    "use_case": "Use this binder pack throughout your wedding planning journey to stay organized, track spending, and manage appointments."
   }
 ]
