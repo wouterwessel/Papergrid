@@ -1897,5 +1897,34 @@
     ],
     "target_audience": "Busy professionals and creators",
     "use_case": "Planning, execution, and weekly review"
+  },
+  {
+    "created_at": "2026-06-20T10:09:32.028953",
+    "title": "Warmly Organized Wedding Binder Pack for Effortless Planning",
+    "niche": "wedding",
+    "product_family": "printable_bundle",
+    "product_subtype": "wedding binder pack",
+    "product_type": "wedding binder pack",
+    "fingerprint": "d7e9bc0a945d5623",
+    "novelty_score": 83,
+    "quality_score": 100,
+    "quality_notes": [],
+    "section_headings": [
+      "Vision Board",
+      "Theme & Color Palette",
+      "Vendor Checklist",
+      "Wedding Party Roles",
+      "Research & Inspiration Sources",
+      "Menu Planning",
+      "Ceremony Details",
+      "Guest Arrival Plan",
+      "Rehearsal Details",
+      "Personalized Vows",
+      "Photography & Videography Shot List",
+      "Post-Wedding To-Dos"
+    ],
+    "chapter_headings": [],
+    "target_audience": "Engaged couples seeking a stylish and comprehensive planning tool that simplifies wedding organization while reflecting their personal style.",
+    "use_case": "Perfect for engaged couples to organize, track, and plan every element of their wedding from engagement to the big day, ensuring a stress-free experience."
   }
 ]
