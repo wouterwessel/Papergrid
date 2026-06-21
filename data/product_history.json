@@ -1926,5 +1926,36 @@
     "chapter_headings": [],
     "target_audience": "Engaged couples seeking a stylish and comprehensive planning tool that simplifies wedding organization while reflecting their personal style.",
     "use_case": "Perfect for engaged couples to organize, track, and plan every element of their wedding from engagement to the big day, ensuring a stress-free experience."
+  },
+  {
+    "created_at": "2026-06-21T10:30:05.118746",
+    "title": "Sage Serenity Wedding Weekly Planner Bundle",
+    "niche": "wedding",
+    "product_family": "printable_bundle",
+    "product_subtype": "weekly planner system",
+    "product_type": "weekly planner system",
+    "fingerprint": "d54648c172906857",
+    "novelty_score": 76,
+    "quality_score": 100,
+    "quality_notes": [],
+    "section_headings": [
+      "Weekly Planning Overview",
+      "Venue Layout & Setup",
+      "Guest List Management",
+      "Vendor Contact Details",
+      "Budget Breakdown",
+      "Honeymoon Planning",
+      "Customizable Timeline",
+      "Important Documents Checklist",
+      "Attire & Accessories Tracker",
+      "Rehearsal Dinner Planner",
+      "Post-Wedding Checklist",
+      "Family & Friends Involvement",
+      "Daily Affirmations & Inspirations",
+      "Event Day Schedule"
+    ],
+    "chapter_headings": [],
+    "target_audience": "Engaged couples seeking organized and stress-free wedding planning.",
+    "use_case": "Ideal for couples during wedding preparations, providing organized weekly tasks, timelines, and vendor management."
   }
 ]
