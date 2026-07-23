@@ -2949,5 +2949,32 @@
     ],
     "target_audience": "Busy professionals and creators",
     "use_case": "Planning, execution, and weekly review"
+  },
+  {
+    "created_at": "2026-07-23T09:23:53.974250",
+    "title": "Blush Wedding Habit Tracker Bundle for Unforgettable Days",
+    "niche": "wedding",
+    "product_family": "printable_bundle",
+    "product_subtype": "habit tracker bundle",
+    "product_type": "habit tracker bundle",
+    "fingerprint": "639348581bb2e0ab",
+    "novelty_score": 100,
+    "quality_score": 100,
+    "quality_notes": [],
+    "section_headings": [
+      "Vendor Communication Log",
+      "Budget Tracker",
+      "Guest List Planner",
+      "Wedding Day Timeline",
+      "Dress Fitting Schedule",
+      "To-Do List",
+      "Honeymoon Packing List",
+      "Checklist for Self-Care",
+      "Rehearsal Dinner Plan",
+      "Ceremony Details"
+    ],
+    "chapter_headings": [],
+    "target_audience": "Engaged couples, particularly brides planning their weddings",
+    "use_case": "Use these printable trackers during the wedding planning process to stay organized and on top of tasks, from venue selection to honeymoon planning."
   }
 ]
