@@ -3072,5 +3072,32 @@
     ],
     "target_audience": "Busy professionals and creators",
     "use_case": "Planning, execution, and weekly review"
+  },
+  {
+    "created_at": "2026-07-27T10:42:30.602578",
+    "title": "Empowered Teacher Study Planner Bundle",
+    "niche": "teacher",
+    "product_family": "printable_bundle",
+    "product_subtype": "study planner bundle",
+    "product_type": "study planner bundle",
+    "fingerprint": "c50e7fb1790db16e",
+    "novelty_score": 96,
+    "quality_score": 100,
+    "quality_notes": [],
+    "section_headings": [
+      "Lessons Overview",
+      "Assessment Tracker",
+      "Monthly Goals",
+      "Professional Development Log",
+      "Classroom Inventory",
+      "Parent Communication",
+      "Field Trip Planner",
+      "Reflective Practices Journal",
+      "Resources & Materials",
+      "Weekly Class Schedule"
+    ],
+    "chapter_headings": [],
+    "target_audience": "Elementary and secondary school teachers looking to improve organization and efficiency",
+    "use_case": "Ideal for daily, weekly, and monthly planning, as well as tracking student progress and assessments throughout the school year"
   }
 ]
