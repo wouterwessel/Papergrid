@@ -3291,5 +3291,36 @@
     ],
     "target_audience": "Busy professionals and creators",
     "use_case": "Planning, execution, and weekly review"
+  },
+  {
+    "created_at": "2026-08-03T10:42:54.589928",
+    "title": "Elegant Sage Wedding Planner Binder Pack",
+    "niche": "productivity",
+    "product_family": "printable_bundle",
+    "product_subtype": "wedding binder pack",
+    "product_type": "wedding binder pack",
+    "fingerprint": "b23a524cee883edc",
+    "novelty_score": 92,
+    "quality_score": 100,
+    "quality_notes": [],
+    "section_headings": [
+      "Wedding Budget Planner",
+      "Guest List Tracker",
+      "Vendor Contact Log",
+      "Wedding Schedule Timeline",
+      "Ceremony Details",
+      "Reception Details",
+      "Attire Checklist",
+      "Seating Arrangement Planner",
+      "Honeymoon Planning",
+      "Inspiration Board",
+      "Vendor Contract Checklist",
+      "Post-Wedding Tasks",
+      "Notes and Ideas",
+      "Payment Schedule Tracker"
+    ],
+    "chapter_headings": [],
+    "target_audience": "Engaged couples looking for structured, modern wedding planning solutions.",
+    "use_case": "Utilize this pack while planning your wedding to organize tasks, budgets, and timelines effortlessly."
   }
 ]
