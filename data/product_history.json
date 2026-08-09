@@ -3482,5 +3482,33 @@
     ],
     "target_audience": "Busy professionals and creators",
     "use_case": "Planning, execution, and weekly review"
+  },
+  {
+    "created_at": "2026-08-09T07:53:39.853940",
+    "title": "Terracotta Wedding Budget Tracker Bundle",
+    "niche": "wedding",
+    "product_family": "printable_bundle",
+    "product_subtype": "budget tracker pack",
+    "product_type": "budget tracker pack",
+    "fingerprint": "6b94dc38f8c7a327",
+    "novelty_score": 85,
+    "quality_score": 100,
+    "quality_notes": [],
+    "section_headings": [
+      "Total Budget Overview",
+      "Vendor Comparison Chart",
+      "Weekly Spending Log",
+      "Payment Schedule",
+      "Guest List Budget Allocation",
+      "Decor Budget Breakdown",
+      "Attire Budget Tracker",
+      "Venue Cost Planner",
+      "Miscellaneous Expenses",
+      "Budget Reflection",
+      "Savings Goals Tracker"
+    ],
+    "chapter_headings": [],
+    "target_audience": "Couples planning their wedding while managing tight budgets",
+    "use_case": "Ideal for engaged couples looking to efficiently manage and track their wedding expenses as they plan their big day."
   }
 ]
