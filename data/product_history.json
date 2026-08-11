@@ -3542,5 +3542,37 @@
     ],
     "target_audience": "Busy professionals and creators",
     "use_case": "Planning, execution, and weekly review"
+  },
+  {
+    "created_at": "2026-08-11T08:09:31.975998",
+    "title": "Guide Workbook Pack 429",
+    "niche": "small-business",
+    "product_family": "guide_workbook",
+    "product_subtype": "step-by-step action guide",
+    "product_type": "step-by-step action guide",
+    "fingerprint": "dryrun-429",
+    "novelty_score": 100,
+    "quality_score": 92,
+    "quality_notes": [
+      "dry-run premium fallback"
+    ],
+    "section_headings": [
+      "Weekly Goals",
+      "Daily Schedule",
+      "Notes",
+      "Habit Tracker",
+      "Reflection",
+      "Action Plan",
+      "Weekly Review",
+      "Priority Backlog"
+    ],
+    "chapter_headings": [
+      "Set a Clear Strategic Focus",
+      "Design a Weekly Execution System",
+      "Prioritize High-Impact Actions",
+      "Scale Through Iteration"
+    ],
+    "target_audience": "Busy professionals and creators",
+    "use_case": "Planning, execution, and weekly review"
   }
 ]
