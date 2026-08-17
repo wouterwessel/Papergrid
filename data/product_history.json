@@ -3734,5 +3734,32 @@
     ],
     "target_audience": "Busy professionals and creators",
     "use_case": "Planning, execution, and weekly review"
+  },
+  {
+    "created_at": "2026-08-17T07:52:30.625656",
+    "title": "Blush Budget Weekly Planner System for Smart Spending",
+    "niche": "budget",
+    "product_family": "printable_bundle",
+    "product_subtype": "weekly planner system",
+    "product_type": "weekly planner system",
+    "fingerprint": "a847742e9e5d9089",
+    "novelty_score": 84,
+    "quality_score": 100,
+    "quality_notes": [],
+    "section_headings": [
+      "Weekly Expense Overview",
+      "Savings Goals Tracker",
+      "Weekly Income Log",
+      "Budget Adjustment Space",
+      "Priority Spending List",
+      "Monthly Reflection Prompt",
+      "Debt Repayment Plan",
+      "Weekly Financial Affirmations",
+      "Spending Cut Ideas",
+      "Weekly Financial Goals"
+    ],
+    "chapter_headings": [],
+    "target_audience": "Budget-conscious individuals looking to improve financial organization and spending habits.",
+    "use_case": "Ideal for weekly planning sessions, this system can be used on weekends or at any point during the week to set financial priorities, track expenses and visualize cash flow."
   }
 ]
