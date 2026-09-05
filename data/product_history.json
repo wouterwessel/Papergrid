@@ -4332,5 +4332,37 @@
     "chapter_headings": [],
     "target_audience": "Teachers seeking to develop positive habits and enhance productivity.",
     "use_case": "Utilize these trackers throughout the school year to cultivate good habits, monitor progress, and reflect on teaching practices."
+  },
+  {
+    "created_at": "2026-09-05T11:08:49.675714",
+    "title": "Guide Workbook Pack 239",
+    "niche": "small-business",
+    "product_family": "guide_workbook",
+    "product_subtype": "step-by-step action guide",
+    "product_type": "step-by-step action guide",
+    "fingerprint": "dryrun-239",
+    "novelty_score": 100,
+    "quality_score": 92,
+    "quality_notes": [
+      "dry-run premium fallback"
+    ],
+    "section_headings": [
+      "Weekly Goals",
+      "Daily Schedule",
+      "Notes",
+      "Habit Tracker",
+      "Reflection",
+      "Action Plan",
+      "Weekly Review",
+      "Priority Backlog"
+    ],
+    "chapter_headings": [
+      "Set a Clear Strategic Focus",
+      "Design a Weekly Execution System",
+      "Prioritize High-Impact Actions",
+      "Scale Through Iteration"
+    ],
+    "target_audience": "Busy professionals and creators",
+    "use_case": "Planning, execution, and weekly review"
   }
 ]
