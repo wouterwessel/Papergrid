@@ -5541,5 +5541,34 @@
     ],
     "target_audience": "Busy professionals and creators",
     "use_case": "Planning, execution, and weekly review"
+  },
+  {
+    "created_at": "2026-10-13T14:48:48.424095",
+    "title": "Ultimate Wedding Study Planner Bundle",
+    "niche": "wedding",
+    "product_family": "printable_bundle",
+    "product_subtype": "study planner bundle",
+    "product_type": "study planner bundle",
+    "fingerprint": "80de6c3c98dfd738",
+    "novelty_score": 89,
+    "quality_score": 100,
+    "quality_notes": [],
+    "section_headings": [
+      "Budget Breakdown",
+      "Guest List Organizer",
+      "Vendor Contact Log",
+      "Timeline Planning",
+      "Theme Inspiration Board",
+      "Ceremony Details Checklist",
+      "Reception Layout Planner",
+      "Honeymoon Planning Checklist",
+      "Wedding Party Roles",
+      "DIY Project Tracker",
+      "Final Touches Planner",
+      "Important Dates Reminder"
+    ],
+    "chapter_headings": [],
+    "target_audience": "Engaged couples preparing for their wedding, wedding planners, and DIY brides.",
+    "use_case": "Use this bundle during the entire wedding planning process, from setting budgets to finalizing details, to keep everything organized and on track."
   }
 ]
