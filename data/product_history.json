@@ -5698,5 +5698,32 @@
     ],
     "target_audience": "Busy professionals and creators",
     "use_case": "Planning, execution, and weekly review"
+  },
+  {
+    "created_at": "2026-10-18T11:56:55.857154",
+    "title": "Terracotta Weekly Workflow Planner Bundle",
+    "niche": "productivity",
+    "product_family": "printable_bundle",
+    "product_subtype": "weekly planner system",
+    "product_type": "weekly planner system",
+    "fingerprint": "9dd614cc76bd312b",
+    "novelty_score": 88,
+    "quality_score": 100,
+    "quality_notes": [],
+    "section_headings": [
+      "Weekly Focus",
+      "Schedule Overview",
+      "Project Brainstorm",
+      "Mindful Practices",
+      "Quick Wins",
+      "Task Tracker",
+      "Inspirational Quotes",
+      "Weekly Reflection",
+      "Brain Dump",
+      "Goal Setting"
+    ],
+    "chapter_headings": [],
+    "target_audience": "Busy professionals and creatives seeking enhanced productivity and organization.",
+    "use_case": "Utilize this planner each week to set clear objectives, manage time effectively, and track progress towards goals, whether for work, personal projects, or creative endeavors."
   }
 ]
