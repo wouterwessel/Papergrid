@@ -5725,5 +5725,37 @@
     "chapter_headings": [],
     "target_audience": "Busy professionals and creatives seeking enhanced productivity and organization.",
     "use_case": "Utilize this planner each week to set clear objectives, manage time effectively, and track progress towards goals, whether for work, personal projects, or creative endeavors."
+  },
+  {
+    "created_at": "2026-10-19T14:23:02.954976",
+    "title": "Guide Workbook Pack 225",
+    "niche": "small-business",
+    "product_family": "guide_workbook",
+    "product_subtype": "step-by-step action guide",
+    "product_type": "step-by-step action guide",
+    "fingerprint": "dryrun-225",
+    "novelty_score": 100,
+    "quality_score": 92,
+    "quality_notes": [
+      "dry-run premium fallback"
+    ],
+    "section_headings": [
+      "Weekly Goals",
+      "Daily Schedule",
+      "Notes",
+      "Habit Tracker",
+      "Reflection",
+      "Action Plan",
+      "Weekly Review",
+      "Priority Backlog"
+    ],
+    "chapter_headings": [
+      "Set a Clear Strategic Focus",
+      "Design a Weekly Execution System",
+      "Prioritize High-Impact Actions",
+      "Scale Through Iteration"
+    ],
+    "target_audience": "Busy professionals and creators",
+    "use_case": "Planning, execution, and weekly review"
   }
 ]
