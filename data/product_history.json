@@ -7000,5 +7000,36 @@
     ],
     "target_audience": "Busy professionals and creators",
     "use_case": "Planning, execution, and weekly review"
+  },
+  {
+    "created_at": "2026-11-28T15:58:20.132522",
+    "title": "Terracotta Elegance Wedding Planner Bundle",
+    "niche": "wedding",
+    "product_family": "printable_bundle",
+    "product_subtype": "wedding binder pack",
+    "product_type": "wedding binder pack",
+    "fingerprint": "a7bb49e3b9f0dbbf",
+    "novelty_score": 96,
+    "quality_score": 100,
+    "quality_notes": [],
+    "section_headings": [
+      "Wedding Vision Board",
+      "Budget Tracker",
+      "Guest List",
+      "Vendor Contact Sheet",
+      "Wedding Timeline",
+      "Seating Plan",
+      "Ceremony Details",
+      "Reception Playlist",
+      "Attire Checklist",
+      "DIY Project Planner",
+      "Post-Wedding Reflections",
+      "Honeymoon Planning",
+      "Final Checklist",
+      "Thank You Note Tracker"
+    ],
+    "chapter_headings": [],
+    "target_audience": "Engaged couples looking for a stylish and organized way to plan their wedding.",
+    "use_case": "Best used in the early stages of wedding planning, as well as for ongoing organization leading up to the big day."
   }
 ]
